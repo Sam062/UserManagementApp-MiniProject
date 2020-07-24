@@ -6,4 +6,5 @@ spring:  mvc:    view:      prefix: /views/
   datasource:    url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: user
-    password:   jpa:    database-platform: org.hibernate.dialect.H2Dialect            
+
+  jpa:    database-platform: org.hibernate.dialect.H2Dialect    show-sql: true

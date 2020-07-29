@@ -1,16 +1,11 @@
 package base.service;
 
-import java.util.List;
+import java.util.Map;
 
-import base.entity.CityMaster;
-import base.entity.CountryMaster;
-import base.entity.StateMaster;
 import base.model.UserModel;
 
 public interface IUserService {
-	List<CountryMaster> getAllCountry();
-	List<StateMaster> getAllState();
-	List<CityMaster> getAllCity();
+	Map<Integer, String> getAllCountry();
 	Boolean saveUser(UserModel umodel);
 
 }

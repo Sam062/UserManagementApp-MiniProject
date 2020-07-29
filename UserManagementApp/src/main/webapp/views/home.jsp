@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<h1 align="center" class="text text-warning">User Registration
+		Page</h1>
 	<hr>
 	<div class="container" align="center">
 		<h3 class="text text-success">${msg }</h3>
@@ -24,22 +26,22 @@
 				<tr>
 					<td><h5>First Name</h5></td>
 					<td><form:input class="form-control" path="firstName"
-							required="required" /></td>
+							required="required" placeholder="INPUT FIRST NAME" /></td>
 				</tr>
 				<tr>
 					<td><h5>Last Name</h5></td>
 					<td><form:input class="form-control" path="lastName"
-							required="required" /></td>
+							required="required" placeholder="INPUT LAST NAME" /></td>
 				</tr>
 				<tr>
 					<td><h5>Email</h5></td>
 					<td><form:input class="form-control" type="email" path="email"
-							required="required" /></td>
+							required="required" placeholder="INPUT EMAIL ADDRESS" /></td>
 				</tr>
 				<tr>
 					<td><h5>Phone No</h5></td>
 					<td><form:input class="form-control" path="phoneNo"
-							required="required" /></td>
+							required="required" placeholder="INPUT PHONE NUMBER" /></td>
 				</tr>
 				<tr>
 					<td><h5>DOB</h5></td>
@@ -55,33 +57,40 @@
 				<tr>
 					<td><h5>Country</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="country.countryID"
-							items="${countryList}" itemLabel="countryName"
-							itemValue="countryID" required="required">
+							type="button" data-toggle="dropdown" path="country"
+							required="required">
+							<form:option class="btn btn-default dropdown-toggle" value="">-SELECT-</form:option>
+							<form:options class="btn btn-default dropdown-toggle"
+								items="${countryMap}"></form:options>
 						</form:select></td>
 				</tr>
+
 				<tr>
 					<td><h5>State</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="state.stateID"
-							items="${stateList}" itemLabel="stateName" itemValue="stateID"
-							required="required">
+							type="button" data-toggle="dropdown" path="state">
+							<form:option value="">-SELECT</form:option>
+							<form:options class="btn btn-default dropdown-toggle"
+								items="${map}"></form:options>
 						</form:select></td>
 				</tr>
 				<tr>
 					<td><h5>City</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="city.cityID"
-							items="${cityList}" itemLabel="cityName" itemValue="cityID"
-							required="required">
+							type="button" data-toggle="dropdown" path="city">
+							<form:option value="">-SELECT</form:option>
+							<form:options class="btn btn-default dropdown-toggle"
+								items="${map}"></form:options>
 						</form:select></td>
 				</tr>
+
 				<tr>
 					<td align="right"><input class="btn btn-danger" type="reset"
 						value="RESET"></td>
 					<td align="center"><input class="btn btn-success"
 						type="submit" value="REGISTER"></td>
 				</tr>
+
 			</table>
 		</form:form>
 	</div>

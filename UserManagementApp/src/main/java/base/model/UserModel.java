@@ -4,9 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import base.entity.CityMaster;
-import base.entity.CountryMaster;
-import base.entity.StateMaster;
 import lombok.Data;
 @Data
 public class UserModel {
@@ -16,9 +13,9 @@ public class UserModel {
 	private String phoneNo;
 	private Date dob;
 	private Character gender;
-	private CountryMaster country;
-	private StateMaster state;
-	private CityMaster city;
+	private Integer country;
+	private Integer state;
+	private Integer city;
 	public Date getDob() {
 		return dob;
 	}
@@ -27,6 +24,4 @@ public class UserModel {
 		Date date=f.parse(dob);  
 		this.dob = date;
 	}
-
-
 }

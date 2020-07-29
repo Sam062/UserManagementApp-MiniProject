@@ -18,8 +18,4 @@ public class StateMaster {
 	private String stateName;
 	@Column(name = "CNTRY_ID")
 	private Integer countryID;
-
-	//	@OneToMany
-	//	private CityMaster cityMaster;
-
 }

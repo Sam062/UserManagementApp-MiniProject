@@ -16,8 +16,4 @@ public class CountryMaster {
 	private Integer countryID;
 	@Column(name = "CNTRY_NAME")
 	private String countryName;
-	
-//	@OneToMany
-//	private StateMaster stateMaster;
-
 }

@@ -9,6 +9,7 @@
 <body>
 
 	<h2>${msg}</h2>
+	<a href="home">GO BACK</a>
 
 </body>
 </html>

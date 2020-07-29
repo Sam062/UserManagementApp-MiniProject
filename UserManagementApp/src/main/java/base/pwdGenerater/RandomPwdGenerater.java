@@ -1,7 +1,7 @@
 package base.pwdGenerater;
 
 public class RandomPwdGenerater {
-	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ@0123456789#abcdefghijklmnopqrstuvwxyz";
 
 	public static String randomAlphaNumeric(int count) {
 		StringBuilder builder = new StringBuilder();

@@ -56,22 +56,24 @@
 					<td><h5>Country</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
 							type="button" data-toggle="dropdown" path="country.countryID"
-							items="${countryList}" required="required">
-							<form:option value="-" label="-SELECT-"></form:option>
+							items="${countryList}" itemLabel="countryName"
+							itemValue="countryID" required="required">
 						</form:select></td>
 				</tr>
 				<tr>
 					<td><h5>State</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
 							type="button" data-toggle="dropdown" path="state.stateID"
-							items="${stateList}" required="required">
+							items="${stateList}" itemLabel="stateName" itemValue="stateID"
+							required="required">
 						</form:select></td>
 				</tr>
 				<tr>
 					<td><h5>City</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
 							type="button" data-toggle="dropdown" path="city.cityID"
-							items="${cityList}" required="required">
+							items="${cityList}" itemLabel="cityName" itemValue="cityID"
+							required="required">
 						</form:select></td>
 				</tr>
 				<tr>

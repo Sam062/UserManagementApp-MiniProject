@@ -71,7 +71,7 @@
 							type="button" data-toggle="dropdown" path="state">
 							<form:option value="">-SELECT</form:option>
 							<form:options class="btn btn-default dropdown-toggle"
-								items="${map}"></form:options>
+								items="${stateMap}"></form:options>
 						</form:select></td>
 				</tr>
 				<tr>
@@ -80,7 +80,7 @@
 							type="button" data-toggle="dropdown" path="city">
 							<form:option value="">-SELECT</form:option>
 							<form:options class="btn btn-default dropdown-toggle"
-								items="${map}"></form:options>
+								items="${cityMap}"></form:options>
 						</form:select></td>
 				</tr>
 

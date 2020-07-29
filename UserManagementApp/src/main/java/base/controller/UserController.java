@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import base.model.UserModel;
 import base.service.IUserService;
@@ -26,6 +28,17 @@ public class UserController {
 		Map<Integer, String> countryMap = service.getAllCountry();
 		model.addAttribute("countryMap", countryMap);
 		return "home";
+	}
+
+	@GetMapping("/getStates")
+	@ResponseBody
+	public Map<Integer, String> getStateByID(@RequestParam("id")Integer countryID) {
+		return service.getStatesByCountryID(countryID);
+	}
+	@GetMapping("/getCities")
+	@ResponseBody
+	public Map<Integer, String> getCityByID(@RequestParam("id")Integer stateID) {
+		return service.getCityByStateID(stateID);
 	}
 
 	@PostMapping("/data")

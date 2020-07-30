@@ -43,6 +43,7 @@ public class UserController {
 
 	@PostMapping("/data")
 	public String showData(@ModelAttribute("userModel")UserModel userModel, Model model) {
+		System.out.println(userModel);
 		Boolean isUserSaved=service.saveUser(userModel);
 
 		if(isUserSaved){

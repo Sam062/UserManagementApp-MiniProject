@@ -7,6 +7,10 @@
 <head>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/app.js"></script>
+
 <title>User Management Application</title>
 </head>
 <body>
@@ -57,7 +61,7 @@
 				<tr>
 					<td><h5>Country</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="country"
+							type="button" data-toggle="dropdown" path="countryID"
 							required="required">
 							<form:option class="btn btn-default dropdown-toggle" value="">-SELECT-</form:option>
 							<form:options class="btn btn-default dropdown-toggle"
@@ -68,19 +72,15 @@
 				<tr>
 					<td><h5>State</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="state">
+							type="button" data-toggle="dropdown" path="stateID">
 							<form:option value="">-SELECT</form:option>
-							<form:options class="btn btn-default dropdown-toggle"
-								items="${stateMap}"></form:options>
 						</form:select></td>
 				</tr>
 				<tr>
 					<td><h5>City</h5></td>
 					<td><form:select class="btn btn-default dropdown-toggle"
-							type="button" data-toggle="dropdown" path="city">
+							type="button" data-toggle="dropdown" path="cityID">
 							<form:option value="">-SELECT</form:option>
-							<form:options class="btn btn-default dropdown-toggle"
-								items="${cityMap}"></form:options>
 						</form:select></td>
 				</tr>
 

@@ -13,9 +13,9 @@ public class UserModel {
 	private String phoneNo;
 	private Date dob;
 	private Character gender;
-	private Integer country;
-	private Integer state;
-	private Integer city;
+	private Integer countryID;
+	private Integer stateID;
+	private Integer cityID;
 	public Date getDob() {
 		return dob;
 	}

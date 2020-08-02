@@ -9,5 +9,7 @@ import base.entity.UserAccounts;
 
 public interface UserAccountRepo extends JpaRepository<UserAccounts, Serializable> {
 	List<UserAccounts> findByEmail(String email);
+	
+	List<UserAccounts> findByPassword(String pwd);
 
 }

@@ -30,11 +30,6 @@ public class UserController {
 		return "home";
 	}
 
-	@GetMapping("/unlockAcc")
-	public String unlockAccount() {
-		return null;
-	}
-
 	@GetMapping("/validateEmail")
 	public @ResponseBody String emailValidater(@RequestParam("email")String email) {
 		return service.findByUserEmail(email);
@@ -56,7 +51,7 @@ public class UserController {
 		Boolean isUserSaved=service.saveUser(userModel);
 
 		if(isUserSaved){
-			model.addAttribute("msg", "Hello "+userModel.getFirstName()+" , Registration almost done. Please check your email.");
+			model.addAttribute("msg", "Hello "+userModel.getFirstName()+" , <br/>Thank you for registering here, Registration almost done. Please check your email.");
 		}
 		else
 			model.addAttribute("msg", "SOMETHING WENT WRONG :(");

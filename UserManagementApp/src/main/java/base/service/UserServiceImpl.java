@@ -13,6 +13,7 @@ import base.entity.CityMaster;
 import base.entity.CountryMaster;
 import base.entity.StateMaster;
 import base.entity.UserAccounts;
+import base.model.UnlockAccount;
 import base.model.UserModel;
 import base.pwdGenerater.RandomPwdGenerater;
 import base.repo.CityMasterRepo;
@@ -88,4 +89,25 @@ public class UserServiceImpl implements IUserService {
 		}
 	}
 
+	@Override
+	public String findByPassword(String pwd) {
+		List<UserAccounts> userAccounts = uaRepo.findByPassword(pwd);
+		if(userAccounts.isEmpty() || userAccounts.size()<1)
+			return "unique";
+		return "duplicate";
+	}
+	@Override
+	public Boolean updateUserByEmail(UnlockAccount unlAccount) {
+		List<UserAccounts> userAccounts = uaRepo.findByEmail(unlAccount.getEmail());
+		UserAccounts userAccounts2 = userAccounts.get(0);
+		userAccounts2.setPassword(unlAccount.getNewPwd());
+		userAccounts2.setAccountStatus("UNLOCKED");
+
+		if(userAccounts.isEmpty() || userAccounts.size()<1)
+			return false;
+		else {
+			uaRepo.save(userAccounts2);
+			return true;
+		}
+	}
 }

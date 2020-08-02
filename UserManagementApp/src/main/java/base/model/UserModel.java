@@ -16,6 +16,9 @@ public class UserModel {
 	private Integer countryID;
 	private Integer stateID;
 	private Integer cityID;
+	private String accountStatus;
+	private String password;
+	
 	public Date getDob() {
 		return dob;
 	}

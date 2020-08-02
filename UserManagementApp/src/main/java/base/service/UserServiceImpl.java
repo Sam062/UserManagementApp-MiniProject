@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import base.constents.AppConstents;
 import base.entity.CityMaster;
 import base.entity.CountryMaster;
 import base.entity.StateMaster;
@@ -18,6 +19,7 @@ import base.repo.CityMasterRepo;
 import base.repo.CountryMasterRepo;
 import base.repo.StateMasterRepo;
 import base.repo.UserAccountRepo;
+import base.util.EmailUtils;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -29,6 +31,8 @@ public class UserServiceImpl implements IUserService {
 	private CityMasterRepo cityMasterRepo;
 	@Autowired
 	private UserAccountRepo uaRepo;
+	@Autowired
+	private EmailUtils emailUtils;
 
 	@Override
 	public Map<Integer, String> getAllCountry() {
@@ -60,14 +64,28 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public Boolean saveUser(UserModel umodel) {
+		umodel.setAccountStatus(AppConstents.ACC_STATUS);
+		umodel.setPassword(RandomPwdGenerater.randomAlphaNumeric(AppConstents.PWD_LENGTH));
 		UserAccounts ua=new UserAccounts();
 		BeanUtils.copyProperties(umodel, ua);
-		ua.setAccountStatus("LOCKED");
-		ua.setPassword(RandomPwdGenerater.randomAlphaNumeric(7));
 
-		UserAccounts save = uaRepo.save(ua);
-		if(save==null)
-			return false;
-		return true;
+		UserAccounts userAcc = uaRepo.save(ua);
+		if(userAcc.getUserID()!=null)
+			return emailUtils.sendUserUnlockEmail(userAcc);
+
+		return false;
 	}
+
+	@Override
+	public String findByUserEmail(String email) {
+		List<UserAccounts> accounts = uaRepo.findByEmail(email);
+		try {
+			if(accounts.isEmpty() || accounts.size()<1)
+				return "unique";
+			return "duplicate";
+		} catch (Exception e) {
+			return "duplicate";
+		}
+	}
+
 }

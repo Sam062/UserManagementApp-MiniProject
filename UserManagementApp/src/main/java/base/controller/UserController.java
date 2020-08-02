@@ -30,6 +30,16 @@ public class UserController {
 		return "home";
 	}
 
+	@GetMapping("/unlockAcc")
+	public String unlockAccount() {
+		return null;
+	}
+
+	@GetMapping("/validateEmail")
+	public @ResponseBody String emailValidater(@RequestParam("email")String email) {
+		return service.findByUserEmail(email);
+	}
+
 	@GetMapping("/getStates")
 	@ResponseBody
 	public Map<Integer, String> getStateByID(@RequestParam("id")Integer countryID) {
@@ -43,11 +53,10 @@ public class UserController {
 
 	@PostMapping("/data")
 	public String showData(@ModelAttribute("userModel")UserModel userModel, Model model) {
-		System.out.println(userModel);
 		Boolean isUserSaved=service.saveUser(userModel);
 
 		if(isUserSaved){
-			model.addAttribute("msg", "Hello "+userModel.getFirstName()+" , Registration Almost Done. Please Check your email.");
+			model.addAttribute("msg", "Hello "+userModel.getFirstName()+" , Registration almost done. Please check your email.");
 		}
 		else
 			model.addAttribute("msg", "SOMETHING WENT WRONG :(");

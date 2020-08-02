@@ -13,3 +13,23 @@ spring:  mvc:    view:      prefix: /views/
     
   h2:    console:      enabled: true
       path: /h2
+      
+      
+  mail:
+    host: smtp.gmail.com
+    username: sam9695654346@gmail.com
+    password: Gmail*sam@9695
+# Other properties    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+# TLS , port 587
+          starttls:
+            enable: true
+
+# SSL, post 465
+#spring.mail.properties.mail.smtp.socketFactory.port = 465
+#spring.mail.properties.mail.smtp.socketFactory.class = javax.net.ssl.SSLSocketFactory

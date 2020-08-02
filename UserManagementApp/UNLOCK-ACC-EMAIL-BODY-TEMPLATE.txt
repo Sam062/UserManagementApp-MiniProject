@@ -1,0 +1,17 @@
+Hi {FNAME} {LNAME} :
+<br/>
+
+Welcome To UMT family, Your registration is almost completed. Please use Below details to unlock your account.<br/>
+<br/>
+
+Temporary Password : {TEMP-PWD} <br/>
+<br/>
+
+<a href='http://localhost:9935/unlockAcc?email={EMAIL}'>
+
+Click here to unlock your account.</a><br/>
+<br/>
+
+Thanks & Regards,<br/>
+UMT Team.<br/>
+

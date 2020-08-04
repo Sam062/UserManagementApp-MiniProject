@@ -79,34 +79,28 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public String findByUserEmail(String email) {
-		List<UserAccounts> accounts = uaRepo.findByEmail(email);
-		try {
-			if(accounts.isEmpty() || accounts.size()<1)
-				return "unique";
+		UserAccounts accounts = uaRepo.findByEmail(email);
+		if(accounts!=null)
 			return "duplicate";
-		} catch (Exception e) {
-			return "duplicate";
-		}
+		return "unique";
 	}
 
 	@Override
-	public String findByPassword(String pwd) {
-		List<UserAccounts> userAccounts = uaRepo.findByPassword(pwd);
-		if(userAccounts.isEmpty() || userAccounts.size()<1)
-			return "unique";
-		return "duplicate";
+	public UserModel findByEmailAndPassword(String email, String pwd) {
+		UserAccounts entity = uaRepo.findByEmailAndPassword(email, pwd);
+		UserModel model=new UserModel();
+		BeanUtils.copyProperties(entity, model);
+		return model;
 	}
 	@Override
-	public Boolean updateUserByEmail(UnlockAccount unlAccount) {
-		List<UserAccounts> userAccounts = uaRepo.findByEmail(unlAccount.getEmail());
-		UserAccounts userAccounts2 = userAccounts.get(0);
-		userAccounts2.setPassword(unlAccount.getNewPwd());
-		userAccounts2.setAccountStatus("UNLOCKED");
-
-		if(userAccounts.isEmpty() || userAccounts.size()<1)
+	public Boolean updateUserAccount(UnlockAccount unlAccount) {
+		UserAccounts userAccounts = uaRepo.findByEmail(unlAccount.getEmail());
+		if(userAccounts==null)
 			return false;
 		else {
-			uaRepo.save(userAccounts2);
+			userAccounts.setPassword(unlAccount.getNewPwd());
+			userAccounts.setAccountStatus("UN-LOCKED");
+			uaRepo.save(userAccounts);
 			return true;
 		}
 	}

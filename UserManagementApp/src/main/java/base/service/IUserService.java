@@ -12,6 +12,6 @@ public interface IUserService {
 	Boolean saveUser(UserModel umodel);
 
 	String findByUserEmail(String email);
-	String findByPassword(String pwd);
-	Boolean updateUserByEmail(UnlockAccount unAccount);
+	UserModel findByEmailAndPassword(String email, String pwd);
+	Boolean updateUserAccount(UnlockAccount unAccount);
 }

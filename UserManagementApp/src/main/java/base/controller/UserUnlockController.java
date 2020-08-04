@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import base.model.UnlockAccount;
+import base.model.UserModel;
 import base.service.IUserService;
 
 @Controller
@@ -28,17 +29,15 @@ public class UserUnlockController {
 
 	@PostMapping("/unlockUserAccount")
 	public String unlockAccount(@ModelAttribute("unlockAccount")UnlockAccount unlockAccount, Model model) {
-		String flag=service.findByPassword(unlockAccount.getTempPwd());
-		if(!flag.equals("duplicate"))
-			model.addAttribute("msg","Incorrect Temporary password!");
-		else{
-			Boolean isUserUpdated = service.updateUserByEmail(unlockAccount);
-			if(isUserUpdated)
-				model.addAttribute("msg","*** Account Unlocked ***");
-			else
-				model.addAttribute("msg","Account Failed To Unlock");
+		UserModel account=service.findByEmailAndPassword(unlockAccount.getEmail(),unlockAccount.getTempPwd());
+		if(account!=null) {
+			service.updateUserAccount(unlockAccount);
+			return "unlockAccountSuccess";	
 		}
-		return "unlockAcc";
+		else{
+			model.addAttribute("msg","Incorrect Email or Temporary Password!");
+			return "unlockAcc";
+		}
 	}
 
 }

@@ -30,9 +30,8 @@
 		Application</h1>
 	<hr>
 	<div class="container" align="center">
-		<font color="red"> <span id="errID"></span>
-		</font>
-		<h3>${msg}</h3>
+		<font color="red" size="5"> <span id="errID"></span>
+		</font> <font color="red" size="5"> ${msg} </font>
 		<form:form action="unlockUserAccount" method="POST"
 			modelAttribute="unlockAccount">
 			<table class="table-hover">

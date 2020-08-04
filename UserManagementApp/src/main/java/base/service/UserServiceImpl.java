@@ -88,8 +88,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserModel findByEmailAndPassword(String email, String pwd) {
 		UserAccounts entity = uaRepo.findByEmailAndPassword(email, pwd);
-		UserModel model=new UserModel();
-		BeanUtils.copyProperties(entity, model);
+		UserModel model=null;
+		if(entity!=null) {
+			model=new UserModel();
+			BeanUtils.copyProperties(entity, model);
+		}
 		return model;
 	}
 	@Override

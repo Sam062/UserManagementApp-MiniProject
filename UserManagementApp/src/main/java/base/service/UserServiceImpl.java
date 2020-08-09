@@ -78,11 +78,11 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public String findByUserEmail(String email) {
+	public UserModel findByUserEmail(String email) {
 		UserAccounts accounts = uaRepo.findByEmail(email);
-		if(accounts!=null)
-			return "duplicate";
-		return "unique";
+		UserModel model=new UserModel();
+		BeanUtils.copyProperties(accounts, model);
+		return model;
 	}
 
 	@Override

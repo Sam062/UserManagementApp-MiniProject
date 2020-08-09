@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="header.jsp"%>
-	<h2>${msg}</h2>
-	<a href="/">GO BACK</a>
+	<%@ include file="header.jsp"%>
+	<h1 align="center">UNDER CONSTRUCTION</h1>
 
 </body>
 </html>

@@ -26,9 +26,7 @@
 <title>User Management Application</title>
 </head>
 <body>
-	<h1 align="center" class="text text-warning">User Management
-		Application</h1>
-	<hr>
+	<%@include file="header.jsp"%>
 	<div class="container" align="center">
 		<font color="red" size="5"> <span id="errID"></span>
 		</font> <font color="red" size="5"> ${msg} </font>

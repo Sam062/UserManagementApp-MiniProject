@@ -32,12 +32,14 @@ public class UserUnlockController {
 		UserModel account=service.findByEmailAndPassword(unlockAccount.getEmail(),unlockAccount.getTempPwd());
 		if(account!=null) {
 			service.updateUserAccount(unlockAccount);
-			return "unlockAccountSuccess";	
+			model.addAttribute("msg", "Password Changed Successfully.");
+			UserModel userModel=new UserModel();
+			model.addAttribute("userModel", userModel);
+			return "startPage";	
 		}
 		else{
 			model.addAttribute("msg","Incorrect Email or Temporary Password!");
 			return "unlockAcc";
 		}
 	}
-
 }

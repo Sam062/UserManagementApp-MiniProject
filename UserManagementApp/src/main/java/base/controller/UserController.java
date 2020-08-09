@@ -20,7 +20,48 @@ public class UserController {
 	@Autowired
 	private IUserService service;
 
-	@GetMapping(value = {"/","/home"})
+	@GetMapping(value = {"/","/start"})
+	public String startPage(Model model) {
+		UserModel userModel=new UserModel();
+		model.addAttribute("userModel", userModel);
+		return "startPage";
+	}
+
+	@PostMapping(value = "/validate")
+	public String validateLogin(@ModelAttribute("userModel")UserModel userModel, Model model) {
+		UserModel result = service.findByEmailAndPassword(userModel.getEmail(), userModel.getPassword());
+		if(result!=null)
+			return "dashboard";
+		else {
+			model.addAttribute("msg", "Invalid Credentials.");
+			return "startPage";
+		}
+	}
+	@GetMapping("/forgotPwd")
+	public String forgotPwd(Model model) {
+		UserModel userModel=new UserModel();
+		model.addAttribute("userModel", userModel);
+		return "forgotPwd";
+	}
+	@PostMapping("/recoverPwd")
+	public String recoverPwd(@ModelAttribute("userModel")UserModel userModel,Model model) {
+		UserModel result = service.findByUserEmail(userModel.getEmail());
+		if(result!=null) {
+			if(result.getAccountStatus().equals("LOCKED"))
+				model.addAttribute("msg", "Please UNLOCK your account first.");
+			else{
+				
+				//IMPL OTP SENDING HERE
+				
+			}
+		}
+		else
+			model.addAttribute("msg", "Invalid Email.");
+
+		return "forgotPwd";
+	}
+
+	@GetMapping(value = {"/home"})
 	public String showHome(Model model) {
 		UserModel userModel=new UserModel();
 		model.addAttribute("userModel", userModel);
@@ -32,7 +73,11 @@ public class UserController {
 
 	@GetMapping("/validateEmail")
 	public @ResponseBody String emailValidater(@RequestParam("email")String email) {
-		return service.findByUserEmail(email);
+		UserModel model=service.findByUserEmail(email);
+		if(model!=null)
+			return "duplicate";
+		else
+			return "unique";
 	}
 
 	@GetMapping("/getStates")

@@ -11,7 +11,8 @@ public interface IUserService {
 	Map<Integer, String> getCityByStateID(Integer stateID);
 	Boolean saveUser(UserModel umodel);
 
-	String findByUserEmail(String email);
+	UserModel findByUserEmail(String email);
 	UserModel findByEmailAndPassword(String email, String pwd);
 	Boolean updateUserAccount(UnlockAccount unAccount);
+	
 }

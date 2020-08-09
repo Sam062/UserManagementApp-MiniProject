@@ -10,6 +10,7 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	
 </script>
 
 <script
@@ -39,17 +40,14 @@
 <title>User Management Application</title>
 </head>
 <body>
-
-	<h1 align="center" class="text text-warning">User Registration
-		Page</h1>
-	<hr>
+	<%@include file="header.jsp"%>
 	<div class="container" align="center">
 		<h3 class="text text-success">${msg }</h3>
 		<form:form action="data" method="POST" modelAttribute="userModel">
 			<table class="table-hover">
 				<tr class="primary">
 					<td colspan="2">
-						<h1 class="text text-primary">Register Here !</h1>
+						<h2 class="text text-primary">Register Here</h2>
 					</td>
 				</tr>
 				<tr>

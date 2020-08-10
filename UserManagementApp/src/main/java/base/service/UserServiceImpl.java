@@ -80,8 +80,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserModel findByUserEmail(String email) {
 		UserAccounts accounts = uaRepo.findByEmail(email);
-		UserModel model=new UserModel();
-		BeanUtils.copyProperties(accounts, model);
+		UserModel model=null;
+		if(accounts!=null) {
+			model=new UserModel();
+			BeanUtils.copyProperties(accounts, model);
+		}
 		return model;
 	}
 

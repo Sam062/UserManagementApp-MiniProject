@@ -17,7 +17,6 @@ import base.service.IUserService;
 
 @Controller
 public class UserController {
-
 	@Autowired
 	private IUserService service;
 
@@ -51,13 +50,20 @@ public class UserController {
 			if(result.getAccountStatus().equals("LOCKED"))
 				model.addAttribute("msg", "Please UNLOCK your account first.");
 			else{
-				TwilloMsg.sendMsg(result.getPhoneNo(), "Your UMT Password is : "+result.getPassword());
+				try {
+					TwilloMsg.sendMsg(result.getPhoneNo(), "Your UMT Password is : "+result.getPassword());
+					StringBuilder number=new StringBuilder("*********");
+					number.append(result.getPhoneNo().substring(9, 13).toString());
+					model.addAttribute("msg", "Password sent to "+number);
+				} catch (Exception e) {
+					e.printStackTrace();
+					model.addAttribute("msg", "Couldn't send messege.");
+				}
 				return "startPage";
 			}
 		}
 		else
 			model.addAttribute("msg", "Invalid Email.");
-
 		return "forgotPwd";
 	}
 

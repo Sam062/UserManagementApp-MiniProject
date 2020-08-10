@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import base.config.TwilloMsg;
 import base.model.UserModel;
 import base.service.IUserService;
 
@@ -50,9 +51,8 @@ public class UserController {
 			if(result.getAccountStatus().equals("LOCKED"))
 				model.addAttribute("msg", "Please UNLOCK your account first.");
 			else{
-				
-				//IMPL OTP SENDING HERE
-				
+				TwilloMsg.sendMsg(result.getPhoneNo(), "Your UMT Password is : "+result.getPassword());
+				return "startPage";
 			}
 		}
 		else

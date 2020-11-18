@@ -18,17 +18,17 @@ spring:  mvc:    view:      prefix: /views/
   mail:
     host: smtp.gmail.com
     username: sam9695654346@gmail.com
-    password: INPUT_PASSWORD_HERE
+    password: Gmail*sam@9695
 # Other properties    properties:
       mail:
         smtp:
           auth: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
+          connectiontimeout: 10000
+          timeout: 1000
+          writetimeout: 10000
 # TLS , port 587
           starttls:
-            enable: true
+            enable: true    port: 587
 
 # SSL, post 465
 #spring.mail.properties.mail.smtp.socketFactory.port = 465
